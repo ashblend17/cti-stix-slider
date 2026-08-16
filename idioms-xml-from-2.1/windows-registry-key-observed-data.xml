@@ -36,6 +36,7 @@
             <cybox:Object id="example:WinUser-ef9bb495-faeb-5390-9330-6fa4f73a8c9f">
                 <cybox:Properties xsi:type="WinUserAccountObj:WindowsUserAccountObjectType">
                     <AccountObj:Creation_Date>2016-01-20T12:31:12+00:00</AccountObj:Creation_Date>
+                    <UserAccountObj:Full_Name>Fred Flintstone</UserAccountObj:Full_Name>
                     <UserAccountObj:Last_Login>2016-07-22T16:08:28+00:00</UserAccountObj:Last_Login>
                     <UserAccountObj:Username>fred</UserAccountObj:Username>
                 </cybox:Properties>

@@ -167,6 +167,7 @@ PROCESS_MAP_2_0 = {
 PROCESS_MAP_2_1 = {
     "is_hidden": Process.is_hidden,
     "pid": Process.pid,
+    "created_time": Process.creation_time,
     "created": Process.creation_time
 }
 
@@ -312,7 +313,7 @@ USER_ACCOUNT_MAP = {
     # TODO: ua20["user_id"]?
     "account_login": UserAccount.username,
     # TODO: account_type -> Account.Domain??
-    # TODO: display_name
+    "display_name": UserAccount.full_name,
     # TODO: is_service_account
     # TODO: is_privileged -> UserAccount.Privilege_List?
     # TODO: can_escalate_privs -> UserAccount.Privilege_List?
@@ -355,7 +356,18 @@ X509_CERTIFICATE_MAP = {
 X509_V3_EXTENSIONS_TYPE_MAP = {
     "basic_constraints": X509V3Extensions.basic_constraints,
     "name_constraints": X509V3Extensions.name_constraints,
-    "policy_constraints": X509V3Extensions.policy_constraints
+    "policy_constraints": X509V3Extensions.policy_constraints,
+    "key_usage": X509V3Extensions.key_usage,
+    "extended_key_usage": X509V3Extensions.extended_key_usage,
+    "subject_key_identifier": X509V3Extensions.subject_key_identifier,
+    "authority_key_identifier": X509V3Extensions.authority_key_identifier,
+    "subject_alternative_name": X509V3Extensions.subject_alternative_name,
+    "issuer_alternative_name": X509V3Extensions.issuer_alternative_name,
+    "subject_directory_attributes": X509V3Extensions.subject_directory_attributes,
+    "crl_distribution_points": X509V3Extensions.crl_distribution_points,
+    "inhibit_any_policy": X509V3Extensions.inhibit_any_policy,
+    "certificate_policies": X509V3Extensions.certificate_policies,
+    "policy_mappings": X509V3Extensions.policy_mappings
 }
 
 

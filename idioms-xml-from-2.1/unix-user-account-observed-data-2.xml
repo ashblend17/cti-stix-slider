@@ -15,6 +15,7 @@
         <cybox:Observable id="example:observable-a350d2a1-5cab-4add-98cf-1dfea10db3f6">
             <cybox:Object id="example:UnixUserAccount-7a76f12c-56ab-4643-a4e9-f0aa413bca84">
                 <cybox:Properties xsi:type="UnixUserAccountObj:UnixUserAccountObjectType">
+                    <UserAccountObj:Full_Name>John Doe</UserAccountObj:Full_Name>
                     <UserAccountObj:Home_Directory>/home/jdoe</UserAccountObj:Home_Directory>
                     <UserAccountObj:Username>jdoe</UserAccountObj:Username>
                     <UnixUserAccountObj:Group_ID>1001</UnixUserAccountObj:Group_ID>

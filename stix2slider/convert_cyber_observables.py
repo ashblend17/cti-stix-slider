@@ -560,6 +560,8 @@ def convert_email_message_c_o(em2x, em1x, obs2x_id):
         handle_refs(em2x, em1x, "bcc_refs", "bcc", 'Properties', sub_obj1x=em1x.header, list_type=EmailRecipients)
     if "content_type" in em2x:
         em1x.header.content_type = em2x["content_type"]
+    if "message_id" in em2x and get_option_value("version_of_stix2x") == "2.1":
+        em1x.header.message_id = em2x["message_id"]
     if "received_lines" in em2x:
         em1x.header.received_lines = ReceivedLineList()
         for rl2x in em2x["received_lines"]:
@@ -970,7 +972,18 @@ def convert_x509_certificate_c_o(c_o_object, obj1x, obs2x_id):
     if "x509_v3_extensions" in c_o_object:
         v3_ext = c_o_object["x509_v3_extensions"]
         obj1x.certificate.standard_extensions = X509V3Extensions()
-        convert_obj(v3_ext, obj1x.certificate.standard_extensions, X509_V3_EXTENSIONS_TYPE_MAP, obs2x_id)
+        convert_obj(v3_ext, obj1x.certificate.standard_extensions, X509_V3_EXTENSIONS_TYPE_MAP, obs2x_id,
+                    specific_ignore_list=["private_key_usage_period_not_before",
+                                          "private_key_usage_period_not_after"])
+        if ("private_key_usage_period_not_before" in v3_ext or
+                "private_key_usage_period_not_after" in v3_ext):
+            obj1x.certificate.standard_extensions.private_key_usage_period = Validity()
+            if "private_key_usage_period_not_before" in v3_ext:
+                obj1x.certificate.standard_extensions.private_key_usage_period.not_before = \
+                    v3_ext["private_key_usage_period_not_before"]
+            if "private_key_usage_period_not_after" in v3_ext:
+                obj1x.certificate.standard_extensions.private_key_usage_period.not_after = \
+                    v3_ext["private_key_usage_period_not_after"]
 
 
 def convert_custom_c_o(c_o_object, obj1x, obs2x_id):
